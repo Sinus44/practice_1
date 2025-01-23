@@ -9,12 +9,12 @@ public class DictionaryService {
         this.dictionary = dictionary;
     }
 
-    public void loadFromFile(String filePath) {
-        dictionary.loadFromFile(filePath);
+    public void load() {
+        dictionary.load();
     }
 
-    public void saveToFile(String filePath) {
-        dictionary.saveToFile(filePath);
+    public void save() {
+        dictionary.save();
     }
 
     public void addEntry(String key, String value) {

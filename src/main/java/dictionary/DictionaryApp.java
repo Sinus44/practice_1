@@ -9,11 +9,11 @@ public class DictionaryApp {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        DictionaryService fourLetterService = new DictionaryService(new FourLetterDictionary());
-        DictionaryService fiveDigitService = new DictionaryService(new FiveDigitDictionary());
+        DictionaryService fourLetterService = new DictionaryService(new RegexDictionary("[A-Za-z]{4}", four_letter_dict_path));
+        DictionaryService fiveDigitService = new DictionaryService(new RegexDictionary("\\d{5}", five_digit_dict_path));
 
-        fourLetterService.loadFromFile(four_letter_dict_path);
-        fiveDigitService.loadFromFile(five_digit_dict_path);
+        fourLetterService.load();
+        fiveDigitService.load();
 
         while (true) {
             System.out.println("Choose a dictionary (1 for 4-letter, 2 for 5-digit) or 0 to save and exit:");
@@ -21,8 +21,8 @@ public class DictionaryApp {
             scanner.nextLine();
 
             if (choice == 0) {
-                fourLetterService.saveToFile(four_letter_dict_path);
-                fiveDigitService.saveToFile(five_digit_dict_path);
+                fourLetterService.save();
+                fiveDigitService.save();
                 break;
             }
 
